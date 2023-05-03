@@ -1,0 +1,338 @@
+@import "colors";
+
+%btn-ozel {
+  width: 50%;
+  padding: 2rem 2rem;
+  color: $white-color;
+  font-size: 3rem;
+  background-color: $main-color;
+  box-shadow: 5px 10px 1px $main-color;
+  border-bottom: 0.1rem $black-color solid;
+
+  &:hover {
+    box-shadow: none;
+    transition: 0.5s;
+    // animation-name: background-animation;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate;
+    // cursor: pointer;
+    // // background: linear-gradient();
+    // @keyframes background-animation {
+    //   from {
+    //     background: linear-gradient(to right, rgb(107, 99, 99) , $main-color);
+    //   }
+    //   to {
+    //     background-color: linear-gradient(to right, rgb(59, 40, 40) , $main-color);
+    //   }
+    // }
+    background: linear-gradient(to left, #030303 50%, $main-color 50%) right;
+    background-size: 200% 100%;
+  }
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  //firefox, opero
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  /* geçişi yavaşlatması için */
+  transition: 0.2s ease;
+  font-family: "Poppins", sans-serif;
+}
+html {
+  /* 1rem 10 px yap */
+  font-size: 62.5%;
+  /* Yatayda scrole çıkmasın diye */
+  overflow-x: hidden;
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+  // background-color: $main-color;
+}
+
+body {
+  background-color: $main-color;
+  height: 200vh;
+}
+// section {
+//   height: 100vh;
+
+// }
+
+// header start
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $black-color;
+  padding: 1rem 4rem;
+  //   border-radius: 2rem;
+
+  position: sticky;
+  top: 0;
+  z-index: 10000000;
+  &-logo {
+    height: 10rem;
+    // border: 5px red solid;
+    border-radius: 50%;
+  }
+  &-navbar {
+    ul {
+      display: flex;
+      gap: 3rem;
+      font-size: 3rem;
+    }
+    li {
+      // background-color: red;
+      list-style-type: none;
+      text-decoration: none;
+
+      a {
+        color: white;
+        &:hover {
+          color: $main-color;
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+
+  &-btn {
+    // background-color: red;
+    button {
+      font-size: 2rem;
+      border-radius: 2rem;
+      color: $white-color;
+      margin-right: 1rem;
+      &:nth-child(1) {
+        padding: 1rem 1rem;
+        background: linear-gradient(
+            90deg,
+            var(--c1, $main-color),
+            var(--c2, #fda085) 51%,
+            var(--c1, #f6d365)
+          )
+          var(--x, 0) / 200%;
+      }
+      &:nth-child(2) {
+        padding: 1rem 1rem;
+        background: linear-gradient(
+            90deg,
+            var(--c1, $main-color),
+            var(--c2, #fda085) 51%,
+            var(--c1, #f6d365)
+          )
+          var(--x, 0) / 200%;
+      }
+      &:hover {
+        --c1: #f6d365;
+        --c2: #fda085;
+      }
+    }
+  }
+}
+// header end
+
+// Home start
+.home {
+  // background-color: black;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-information {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $main-color;
+    // background-color: red;
+    gap: 2rem;
+
+    span {
+      // background-color: yellow;
+      font-size: 3rem;
+    }
+
+    &-title {
+      font-size: 20rem;
+      transform: rotate(5deg);
+      -webkit-transform: rotate(5deg);
+      -moz-transform: rotate(5deg);
+      -o-transform: rotate(5deg);
+      -ms-transform: rotate(5deg);
+    }
+
+    button {
+      @extend %btn-ozel;
+    }
+  }
+
+  &-video {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    min-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+// Home end
+
+// movies and series start
+.movies {
+  margin-top: 5rem;
+  &-heading {
+    // padding-top: 5rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4.5rem;
+    color: #fff;
+    // padding: 5rem;
+    border-bottom: 1px solid black;
+    small {
+      color: #102c40;
+      text-transform: lowercase;
+    }
+    span {
+      color: #000;
+      text-transform: uppercase;
+    }
+  }
+
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    // height: 80rem;{
+
+    &-box {
+      padding-bottom: 5rem;
+      background-color: #fff;
+      border-radius: 3rem;
+
+      &-image {
+        height: 40rem;
+        overflow: hidden;
+        width: 100%;
+        border-top-left-radius: 3rem;
+        border-top-right-radius: 3rem;
+        object-fit: cover;
+
+        img {
+          height: 100%;
+          width: 100%;
+
+          &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+          }
+        }
+      }
+
+      &-content {
+        padding: 2rem;
+        text-align: center;
+        // background-color: #000;
+        &-title {
+          line-height: 1.5;
+          font-size: 2.5rem;
+        }
+
+        a {
+          &:nth-child(1) {
+            color: $main-color;
+          }
+        }
+
+        span {
+          display: block;
+          padding-top: 1rem;
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1.6rem;
+          line-height: 1.8;
+          color: #5f5757;
+          padding: 4rem 0;
+          // margin-bottom: 6rem;
+        }
+
+        &-button {
+          @extend %btn-ozel;
+          @include border-radius(20px);
+
+          // padding-bottom: 5rem;
+        }
+      }
+    }
+  }
+}
+
+// movies and series end
+
+// footer start
+.footer {
+  background-color: $black-color;
+  text-align: center;
+
+  &-share {
+    padding: 2rem 0;
+    a {
+      width: 5rem;
+      height: 5rem;
+      line-height: 4rem;
+      // text-align: center;
+      color: #fff;
+      font-size: 2rem;
+      border: #612424;
+      border-radius: 50%;
+      margin: 0.3rem;
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+  }
+
+  &-links {
+    padding-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    
+  }
+  a {
+    background-color: $main-color;
+    padding: 0.7rem 2rem;
+    color: #fff;
+    font-size: 2rem;
+    border: var(--border);
+
+    &:hover {
+      background-color: $black-color;
+      opacity: 0.7;
+    }
+
+  }
+
+}
+// footer end
